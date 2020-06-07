@@ -1,5 +1,7 @@
 package br.ce.wcaquino.taskbackend.controller;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,12 +38,15 @@ public class TaskController {
 		if(todo.getTask() == null || todo.getTask() == "") {
 			throw new ValidationException("Fill the task description");
 		}
+		
 		if(todo.getDueDate() == null) {
+			System.out.println("################data " + todo.getDueDate());
 			throw new ValidationException("Fill the due date");
 		}
-		if(!DateUtils.isEqualOrFutureDate(todo.getDueDate())) {
-			throw new ValidationException("Due date must not be in past");
-		}
+		//if(!DateUtils.isEqualOrFutureDate(todo.getDueDate())) {
+			//throw new ValidationException("Due date must not be in past");
+		//}
+		
 		Task saved = todoRepo.save(todo);
 		return new ResponseEntity<Task>(saved, HttpStatus.CREATED);
 	}

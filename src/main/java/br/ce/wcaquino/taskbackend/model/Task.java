@@ -1,7 +1,5 @@
 package br.ce.wcaquino.taskbackend.model;
 
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +14,7 @@ public class Task {
 	private String task;
 	
 	@Column(nullable = false)
-	private LocalDate dueDate;
+	private String dueDate;
 	
 	public Task() {}
 
@@ -38,11 +36,11 @@ public class Task {
 		this.task = task;
 	}
 	
-	public LocalDate getDueDate() {
+	public String getDueDate() {
 		return dueDate;
 	}
 
-	public void setDueDate(LocalDate dueDate) {
+	public void setDueDate(String dueDate) {
 		this.dueDate = dueDate;
 	}
 }
